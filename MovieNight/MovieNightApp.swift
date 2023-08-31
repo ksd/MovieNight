@@ -11,7 +11,20 @@ import SwiftUI
 struct MovieNightApp: App {
     var body: some Scene {
         WindowGroup {
-            MinFedeApp()
+            NavigationStack {
+                MinFedeApp()
+                    .navigationTitle("Mine fede film")
+                    .toolbar{
+                        ToolbarItem {
+                            NavigationLink {
+                                Text("LOGIN")
+                            } label: {
+                                Text("login")
+                            }
+                            
+                        }
+                    }
+            }
         }
     }
 }

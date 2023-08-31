@@ -14,8 +14,12 @@ struct MinFedeApp: View {
     var body: some View {
         List {
             ForEach(movies) { theMovie in
-                MovieCell(movie: theMovie)
-                    .listRowSeparator(.hidden)
+                NavigationLink {
+                    Text("detaljesiden for film \(theMovie.title)")
+                } label: {
+                    MovieCell(movie: theMovie)
+                }
+                .listRowSeparator(.hidden)
             }
         }
     }
@@ -28,6 +32,9 @@ struct MinFedeApp: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MinFedeApp()
+        NavigationStack{
+            MinFedeApp()
+                .navigationTitle("Demo film")
+        }
     }
 }

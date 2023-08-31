@@ -10,25 +10,22 @@ import SwiftUI
 struct MovieCell: View {
     var movie: Movie
     
-    var myColor: Color {
-        movie.title.count > 7 ? .blue : .yellow
-    }
-    
     var body: some View {
-        
-        HStack(alignment: .top){
-            Text(movie.title)
-                .foregroundColor(.white)
-                .font(.headline)
-            Spacer()
-            Image(movie.poster)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 150)
-                .cornerRadius(15)
-        }
-        .padding()
-        .background(myColor)
+        Image(movie.poster)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .cornerRadius(15)
+            .overlay(alignment: .bottom) {
+                ZStack(alignment: .center) {
+                    Color.white
+                        .opacity(0.7)
+                        .frame(height: 60)
+                    Text(movie.title)
+                        .font(.title)
+                        .foregroundColor(.accentColor)
+                }
+                
+            }
     }
 }
 

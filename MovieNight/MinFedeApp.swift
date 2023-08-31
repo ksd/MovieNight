@@ -15,6 +15,7 @@ struct MinFedeApp: View {
         List {
             ForEach(movies) { theMovie in
                 MovieCell(movie: theMovie)
+                    .listRowSeparator(.hidden)
             }
         }
     }

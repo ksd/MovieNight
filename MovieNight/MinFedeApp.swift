@@ -9,31 +9,28 @@ import SwiftUI
 
 struct MinFedeApp: View {
     
-    @State private var movies = MovieController().movies
+    @EnvironmentObject var movieController: MovieController
     
     var body: some View {
         List {
-            ForEach(movies) { theMovie in
+            ForEach(movieController.movies) { theMovie in
                 NavigationLink {
                     Text("detaljesiden for film \(theMovie.title)")
                 } label: {
                     MovieCell(movie: theMovie)
                 }
                 .listRowSeparator(.hidden)
+                
             }
         }
     }
 }
 
-
-
-
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        var mc = MovieController()
         NavigationStack{
-            MinFedeApp()
+            MinFedeApp().environmentObject(mc)
                 .navigationTitle("Demo film")
         }
     }

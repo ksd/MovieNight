@@ -7,8 +7,8 @@
 
 import Foundation
 
-class MovieController {
-    public var movies: [Movie] {
+class MovieController: ObservableObject {
+    @Published private(set) var movies =
         [
             Movie(title:"The Matrix"),
             Movie(title:"Inception"),
@@ -16,5 +16,8 @@ class MovieController {
             Movie(title:"Edge of Tomorrow"),
             Movie(title:"Alita")
         ]
+    
+    func addMovie(_ movie: Movie) {
+        movies.append(movie)
     }
 }
